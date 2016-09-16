@@ -102,7 +102,6 @@ Assuming ``metadata.xml`` contains SAML metadata for the assertion source:
  data returned by the ``verify()`` method. The ``signed_xml`` attribute of the return value is the XML node or string that
  was signed.
 
-.. _signing-saml-assertions:
 
 Signing SAML assertions
 ~~~~~~~~~~~~~~~~~~~~~~~~
