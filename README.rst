@@ -110,8 +110,7 @@ Signing SAML assertions
  The SAML assertion schema specifies a location for the enveloped XML signature (after ``<Issuer>`` in either the Response or Assertion). To sign a SAML assertion in a schema-compliant way, insert a signature placeholder tag at that location
  before calling XMLSigner: ``<ds:Signature Id="placeholder"></ds:Signature>``.
 
-.. code-block:: python
-
+```python
   sig_in_assertion = '''<samlp:Response xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
                                         xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="responseId">
                           <saml:Assertion xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -122,8 +121,6 @@ Signing SAML assertions
                         </samlp:Response>'''
   XMLSigner().sign(etree.fromstring(sig_in_assertion), reference_uri='assertionId', key=key, cert=cert)
 
-.. code-block:: python
-
   sig_in_response = '''<samlp:Response xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
                                       xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="responseId">
                          <saml:Issuer>http://idp.example.com/metadata.php</saml:Issuer>
@@ -133,7 +130,7 @@ Signing SAML assertions
                         </saml:Assertion>
                       </samlp:Response>'''
   XMLSigner().sign(etree.fromstring(sig_in_response), reference_uri='responseId', key=key, cert=cert)
-
+```
 
  **Recommended reading:** `W3C XML Signature Best Practices for Applications <http://www.w3.org/TR/xmldsig-bestpractices/#practices-applications>`_, `OWASP: On Breaking SAML: Be Whoever You Want to Be <https://www.owasp.org/images/2/28/Breaking_SAML_Be_Whoever_You_Want_to_Be_-_Juraj_Somorovsky%2BChristian_Mainka.pdf>`_
 
